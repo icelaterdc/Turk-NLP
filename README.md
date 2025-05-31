@@ -44,8 +44,8 @@ pip install poetry
 Projeyi kurmak için:
 
 ```bash
-git clone https://github.com/kullaniciadi/turknlp.git
-cd turknlp
+git clone https://github.com/icelaterdc/Turk-NLP.git
+cd Turk-NLP
 poetry install
 ```
 
