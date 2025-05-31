@@ -14,25 +14,6 @@ TurkNLP, Türkçe dili için sıfırdan geliştirilmiş, modüler yapıya sahip,
 * ⚙️ **Modüler Mimari**: Her modül bağımsız ve entegre çalışabilir
 * 🧪 **CLI ve API desteği**: Komut satırı ve REST API üzerinden kullanım
 
-## Dizin Yapısı
-
-```
-TurkNLP/
-├── turknlp/                # Ana Python modülü
-│   ├── tokenization/       # Tokenizer sınıfları
-│   ├── morphology/         # Morfolojik analiz
-│   ├── pos/                # POS tagging
-│   ├── ner/                # Named Entity Recognition
-│   ├── sentiment/          # Duygu analizi modelleri
-│   ├── transformers/       # Transformer modelleri entegrasyonu
-│   └── utils/              # Yardımcı araçlar
-├── tests/                  # Birim testleri
-├── examples/               # Jupyter örnekleri
-├── pyproject.toml          # Proje yapılandırması (Poetry tabanlı)
-├── README.md
-└── .github/workflows/      # Otomatik test/CI betikleri
-```
-
 ## Kurulum
 
 Bu proje [Poetry](https://python-poetry.org/) ile yapılandırılmıştır. Eğer Poetry yüklü değilse:
