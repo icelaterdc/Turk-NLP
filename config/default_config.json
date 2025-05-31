@@ -1,0 +1,5 @@
+{
+    "summarizer_model": "deniz/transformer-summarizer-tr",
+    "sentiment_model": "saglamyigit/bert-base-turkish-sentiment-cased",
+    "lemmatizer_mode": "rule"
+}
