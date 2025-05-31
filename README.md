@@ -1,48 +1,52 @@
 # TurkNLP – Geniş Kapsamlı Türkçe Doğal Dil İşleme (NLP) Kütüphanesi
 
-TurkNLP, Türkçe dili için sıfırdan geliştirilmiş, modüler halinde organize edilmiş, genisletilebilir ve modern bir doğal dil işleme kütüphanesidir. Amaç; hem akademik çalışmalarda hem de endüstriyel projelerde Türkçe NLP çalışmalarını desteklemektir.
+TurkNLP, Türkçe dili için sıfırdan geliştirilmiş, modüler yapıya sahip, genişletilebilir ve modern bir doğal dil işleme (NLP) kütüphanesidir. Amaç; hem akademik çalışmalarda hem de endüstriyel projelerde Türkçe NLP alanındaki ihtiyaçlara açık kaynaklı bir çözüm sunmaktır.
 
 ## Özellikler
 
-* ✨ **Tokenizasyon**: Türkçe diline uygun noktalama ve ek ayrışması
-* 🪤 **Morfolojik Çözümleme**: Ek ayrışması, kök bulma ve yapısal analiz
-* 🔮 **POS Tagging**: Türkçe için özelleştirilmiş sözcük türü etiketleme
-* 🧬 **Ad Öbeği Çıkarımı (NER)**: Küçük ve orta boyutlu Türkçe NER modelleri
-* ⚖️ **Sentiment Analizi**: Türkçe duygu sınıflandırması için hazır modeller
-* 🧬 **Leksik Analiz**: Sözcük özellikleri, kelime türevleri, anlam frekansları
-* 🔢 **Makine Öğrenmesi ve Transformer Entegrasyonu**: Huggingface destekli modeller
-* ⚙️ **Modüler Arası Bağlantı**: Her modül, diğerleriyle uyumlu çalışır
-* 🔧 **API ve CLI Arayüzleri**: Kolay entegrasyon ve terminal üzerinden çalışma
+* ✨ **Tokenizasyon**: Türkçeye uygun kelime ve cümle ayırma
+* 🧠 **Morfolojik Çözümleme**: Ek ayrıştırma ve kök bulma
+* 🔎 **POS Tagging**: Kelime türü etiketleme
+* 🧾 **Ad Öbeği Çıkarımı (NER)**: Kişi, kurum, yer vs. tanıma
+* ⚖️ **Duygu Analizi**: Türkçeye uygun olumlu/olumsuz duygu sınıflandırma
+* 📚 **Leksik Analiz**: Sözlük tabanlı yapı ve anlamsal analiz
+* 🤖 **Transformer Entegrasyonu**: Huggingface destekli modellerle çalışma
+* ⚙️ **Modüler Mimari**: Her modül bağımsız ve entegre çalışabilir
+* 🧪 **CLI ve API desteği**: Komut satırı ve REST API üzerinden kullanım
 
 ## Dizin Yapısı
 
 ```
 TurkNLP/
 ├── turknlp/                # Ana Python modülü
-│   ├── tokenization/
-│   ├── morphology/
-│   ├── pos/
-│   ├── ner/
-│   ├── sentiment/
-│   ├── lexicon/
-│   ├── transformers/
-│   ├── cli/
-│   └── utils/
+│   ├── tokenization/       # Tokenizer sınıfları
+│   ├── morphology/         # Morfolojik analiz
+│   ├── pos/                # POS tagging
+│   ├── ner/                # Named Entity Recognition
+│   ├── sentiment/          # Duygu analizi modelleri
+│   ├── transformers/       # Transformer modelleri entegrasyonu
+│   └── utils/              # Yardımcı araçlar
 ├── tests/                  # Birim testleri
-├── examples/               # Kullanım örnekleri (notebook)
-├── data/                   # Örnek veri setleri ve modeller
-├── scripts/                # Model eğitimi ve işleme scriptleri
-├── .github/workflows/      # Otomatik test/CI betikleri
-├── requirements.txt
-├── setup.py
-└── README.md
+├── examples/               # Jupyter örnekleri
+├── pyproject.toml          # Proje yapılandırması (Poetry tabanlı)
+├── README.md
+└── .github/workflows/      # Otomatik test/CI betikleri
 ```
 
 ## Kurulum
 
+Bu proje [Poetry](https://python-poetry.org/) ile yapılandırılmıştır. Eğer Poetry yüklü değilse:
+
 ```bash
-pip install -r requirements.txt
-python setup.py install
+pip install poetry
+```
+
+Projeyi kurmak için:
+
+```bash
+git clone https://github.com/kullaniciadi/turknlp.git
+cd turknlp
+poetry install
 ```
 
 ## Temel Kullanım
@@ -59,20 +63,19 @@ for token, morph in zip(tokens, morphs):
     print(token, morph)
 ```
 
-## Çevrim İçi Modeller
-
-TurkNLP, Huggingface modelleriyle entegredir. Ağaç yapısında `transformers/` dizinindeki betikleri kullanarak T5, BERT tabanlı önceden eğitilmiş modelleri çağırabilirsiniz.
+## Transformer Destekli Modeller
 
 ```python
 from turknlp.transformers import TurkishBERTNER
-ner_model = TurkishBERTNER()
-print(ner_model.predict("Mustafa Kemal Atatürk, Türkiye Cumhuriyeti'nin kurucusudur."))
+model = TurkishBERTNER()
+result = model.predict("Mustafa Kemal Atatürk Türkiye Cumhuriyeti'nin kurucusudur.")
+print(result)
 ```
 
 ## Testler
 
 ```bash
-pytest tests/
+poetry run pytest tests/
 ```
 
 ## Yol Haritası
@@ -83,12 +86,12 @@ pytest tests/
 * [x] NER
 * [x] Sentiment
 * [x] Transformer destek
-* [ ] Bağlam bazlı anlambilim (Word Sense Disambiguation)
+* [ ] Bağlam bazlı anlambilim (WSD)
 * [ ] Dil modeli destekli metin üretimi
 
 ## Katkı
 
-Pull request'ler, hata bildirimleri ve yeni özellik önerileri açıktır.
+Projeye katkı sağlamak için forkladıktan sonra PR gönderebilirsiniz:
 
 ```bash
 git clone https://github.com/icelaterdc/Turk-NLP.git
@@ -98,8 +101,8 @@ git checkout -b yeni-ozellik
 
 ## Lisans
 
-MIT Lisansı ile sunulmuştur.
+MIT Lisansı ile lisanslanmıştır.
 
 ---
 
-> "TurkNLP, Türkçe NLP alanında açık kaynak, şeffaf ve gelişime açık bir altyapı sunmayı hedefler."
+> "TurkNLP, Türkçeye özel geliştirilen açık kaynak NLP araçları için güçlü bir temel sunmayı hedefler."
